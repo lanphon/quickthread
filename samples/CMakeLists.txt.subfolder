@@ -1,0 +1,7 @@
+#/* vim: set filetype=cmake : */ ~
+get_filename_component(TARGET ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+include_directories(.)
+aux_source_directory(. COMPOENT_CODE)
+
+add_executable(${TARGET} ${COMPOENT_CODE})
+target_link_libraries(${TARGET} PUBLIC qt_lib)

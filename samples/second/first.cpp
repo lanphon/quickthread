@@ -176,7 +176,18 @@ s_abort( cort_info_t* next_cor )
 // all the coroutines should be managed globally
 cort_info_t *tarr[10];
 
-void f0(void *)
+void _f0(void *);
+void f0(void *p)
+{
+    printf("test ----------------------\n");
+    _f0(p);
+
+    // NEVER REACHED, since _f0() has an infinite loop
+
+    printf("test ---------------------over\n");
+}
+
+void _f0(void *)
 {
     using namespace std;
     register long rdi asm("rdi");

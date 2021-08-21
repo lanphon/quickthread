@@ -94,6 +94,10 @@ typedef void (qt_cleanup_t)(void *pt, void *vuserf_return);
 /* All things are put on the stack relative to the final value of
    the stack pointer. */
 #ifdef QUICKTHREADS_GROW_DOWN
+/*
+ * x86_64's stack is grown down
+ * QUICKTHREADS_STKBASE is 16*8byte = 128byte = 0x80
+ */
 #define QUICKTHREADS_ADJ(sp)	(((char *)sp) - QUICKTHREADS_STKBASE)
 #else
 #define QUICKTHREADS_ADJ(sp)	(((char *)sp) + QUICKTHREADS_STKBASE)
